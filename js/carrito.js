@@ -72,6 +72,24 @@ function actualizarBotonesEliminar(){
 }
 
 function eliminarDelCarrito(evento){
+    Toastify({
+        text: "Producto Eliminado",
+        duration: 3000,
+        close: true,
+        gravity: "bottom", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right,  #cf7619, #efb07d)",
+          color:"black"
+        },
+        offset: {
+            x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+          },
+        onClick: function(){} // Callback after click
+      }).showToast();
+
     const idEliminar= evento.currentTarget.id;
     const productoEliminado= productoCarrito.find(producto => producto.id === idEliminar);
     const index = productoCarrito.findIndex(producto => producto.id === idEliminar)
@@ -86,9 +104,20 @@ function eliminarDelCarrito(evento){
 botonVaciar.addEventListener("click", vaciarCarrito);
 
 function vaciarCarrito(){
-    productoCarrito.length =0;
-    localStorage.setItem("productos-carrito", JSON.stringify(productoCarrito));
-    cargarProductosEnCarrito();
+    swal({
+        title: "¿Esta seguro que quiere vaciar su carrito?",
+        text: `Se eliminaran ${productoCarrito.reduce((acc, producto) => acc + producto.cantidad,0)} productos`,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+            productoCarrito.length =0;
+            localStorage.setItem("productos-carrito", JSON.stringify(productoCarrito));
+            cargarProductosEnCarrito();
+        }
+      });
 }
 
 //TOTAL
@@ -103,7 +132,6 @@ function total(){
 botonComprar.addEventListener("click", comprarCarrito);
 
 function comprarCarrito(){
-
     productoCarrito.length =0;
     localStorage.setItem("productos-carrito", JSON.stringify(productoCarrito));
     

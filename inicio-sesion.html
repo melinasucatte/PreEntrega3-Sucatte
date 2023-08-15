@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/michishop.css">
-    <title>CARRITO</title>
+    <title>INICIAR SESION</title>
 </head>
 <body>
     <div class="contenedor">
@@ -25,10 +24,10 @@
                 <!--NAVEGADOR-->
                 <ul class="navegador">
                     <li>
-                        <a href="index.html" class="boton boton-volvertienda"><i class="bi bi-heart-fill"></i> SEGUIR COMPRA</a>
+                        <a href="index.html" class="boton boton-volvertienda"><i class="bi bi-heart-fill"></i>TIENDA</a>
                     </li>
                     <li>
-                        <a href="carrito.html" class="boton boton-carrito active"><i class="bi bi-cart"></i>CARRITO</a>
+                        <a href="carrito.html" class="boton boton-carrito"><i class="bi bi-cart"></i>IR AL CARRITO</a>
                     </li>
                 </ul>
             </nav>
@@ -38,31 +37,30 @@
             </footer>
         </aside>
         <main class="main">
-            <!--CUERPO DEL CARRITO-->
-            <h2 class="titulo-main">TODOS LOS PRODUCTOS</h2>
-            <div class="contenedor-carrito">
-                <p id="carrito-vacio" class="carrito-vacio">TU CARRITO ESTA VACIO</p>
-                <div id="carrito-lleno" class="carrito-lleno ocultar"></div>
-                <div id="carrito-acciones" class="carrito-acciones ocultar">
-                    <div >
-                        <button id="carrito-vaciar" class="carrito-vaciar">VACIAR CARRITO</button>
+            <!--CUERPO INICIAR SESION-->
+            <h2 class="titulo-inicio">INICIAR SESION</h2>
+            <div class="form">
+                <form id="inicio" class="inicio">
+                    <div class="ingresar">
+                        <h5>INGRESE SU NOMBRE</h5>
+                       <input type="text" name="nombre" placeholder="Ingrese Nombre" id="nombre">
                     </div>
-                    <div class="carrito-total">
-                        <div class="total-compra">
-                            <p>TOTAL:</p>
-                            <p id="total">$ 5650</p>
-                        </div> 
-                        <button id="carrito-comprar" class="carrito-comprar">COMPRAR</button>
+                    <div class="ingresar">
+                        <h5>INGRESE CONTRASEÑA</h5>
+                        <input type="password" name="contrasenia" placeholder="Ingrese contaseña" id="contrasenia">
                     </div>
-                </div>
-                <p id="carrito-final" class="carrito-final ocultar">Gracias por tu compra! Vuelva Pronto, Michi Shop <i class="bi bi-heart-fill"> </i></p>
+                    <div>
+                        <button type="submit" class="boton-inicio">Iniciar Sesion</button>
+                    </div>
+                </form>
+                <p id="mensajes"></p>
             </div>
         </main>
     </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/michishop.js"></script>
     <script src="./js/carrito.js"></script>
+    <script src="./js/inicio.js"></script>
     <script src="./js/menu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

@@ -1,166 +1,11 @@
-//LISTA DE PRODUCTOS
-const productosMichi = [
-    {
-        id: "alimento seco",
-        producto: "Alimento Seco",
-        img: "./img/alimento-seco.jpg",
-        precio: 10000,
-        categoria:{
-            nombre: "ALIMENTO",
-            id: "alimento",
-        },
-    },
-    {
-        id: "alimento humedo",
-        producto: "Alimento Humedo",
-        img: "./img/alimento-humedo.jpg",
-        precio: 500,
-        categoria:{
-            nombre: "ALIMENTO",
-            id: "alimento",
-        },
-    },
-    {
-        id: "snack",
-        producto: "Snack",
-        img: "./img/snack.jpg",
-        precio: 200,
-        categoria:{
-            nombre: "ALIMENTO",
-            id: "alimento",
-        },
-    },
-    {
-        id: "hierba",
-        producto: "Hierba",
-        img: "./img/hierba.jpg",
-        precio: 150,
-        categoria:{
-            nombre: "ACCESORIOS",
-            id: "accesorios",
-        },
-    },
-    {
-        id: "juguete",
-        producto: "Juguete",
-        img: "./img/juguete.jpg",
-        precio: 300,
-        categoria:{
-            nombre: "ACCESORIOS",
-            id: "accesorios",
-        },
-    },
-    {
-        id: "rascador",
-        producto: "Rascador",
-        img: "./img/rascador.jpg",
-        precio: 2500,
-        categoria:{
-            nombre: "ACCESORIOS",
-            id: "accesorios",
-        },
-    },
-    {
-        id: "chapita",
-        producto: "Chapita",
-        img: "./img/chapita.jpg",
-        precio: 200,
-        categoria:{
-            nombre: "PASEO",
-            id: "paseo",
-        },
-    },
-    {
-        id: "trasportadora",
-        producto: "Transportadora",
-        img: "./img/transportadora.jpg",
-        precio: 5500,
-        categoria:{
-            nombre: "PASEO",
-            id: "paseo",
-        },
-    },
-    {
-        id: "pretal",
-        producto: "Pretal",
-        img: "./img/pretal.jpg",
-        precio: 1000,
-        categoria:{
-            nombre: "PASEO",
-            id: "paseo",
-        },
-    },
-    {
-        id: "collar",
-        producto: "Collar",
-        img: "./img/collar.jpg",
-        precio: 500,
-        categoria:{
-            nombre: "PASEO",
-            id: "paseo",
-        },
-    },
-    {
-        id: "comedero",
-        producto: "Comedero",
-        img: "./img/comedero.jpg",
-        precio: 3000,
-        categoria:{
-            nombre: "ComidaYBebedero",
-            id: "comidaybebedero",
-        },
-    },
-    {
-        id: "bebedero",
-        producto: "Bebedero",
-        img: "./img/bebedero.jpg",
-        precio: 6000,
-        categoria:{
-            nombre: "COMEDERO Y BEBEDERO",
-            id: "comederoybebedero",
-        },
-    },
-    {
-        id: "cama",
-        producto: "Cama",
-        img: "./img/cama.jpg",
-        precio: 3200,
-        categoria:{
-            nombre: "CAMA",
-            id: "cama",
-        },
-    },
-    {
-        id: "litera",
-        producto: "Litera",
-        img: "./img/litera.jpg",
-        precio: 3000,
-        categoria:{
-            nombre: "HIGIENE",
-            id: "higiene",
-        },
-    },
-    {
-        id: "piedras",
-        producto: "Piedras",
-        img: "./img/piedras.jpg",
-        precio: 500,
-        categoria:{
-            nombre: "HIGIENE",
-            id: "higiene",
-        },
-    },
-    {
-        id: "pipeta",
-        producto: "Pipeta",
-        img: "./img/pipeta.jpg",
-        precio: 1500,
-        categoria:{
-            nombre: "HIGIENE",
-            id: "higiene",
-        },
-    }
-];
+let productosMichi =[];
+
+fetch("./js/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        productosMichi = data;
+        agregarProductos(productosMichi);
+    })
 
 const contenedorProductos= document.querySelector("#contenedor-productos");
 const categoriaProductos= document.querySelectorAll(".boton-productos");
@@ -190,7 +35,7 @@ function agregarProductos(productosElegidos){
         actualizarBotonesAgregar();
 }
 
-agregarProductos(productosMichi); 
+ 
 //FILTRO PRODUCTOS
 categoriaProductos.forEach( boton => {
     boton.addEventListener("click", (e) => {
@@ -238,6 +83,25 @@ if(productosCarritoMS){
 //AGREGAR PRODUCTOS AL CARRITO
 
 function agregarAlCarrito(evento){
+
+    Toastify({
+        text: "Agregado al carrito",
+        duration: 3000,
+        close: true,
+        gravity: "bottom", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right,  #cf7619, #efb07d)",
+          color:"black"
+        },
+        offset: {
+            x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+            y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+          },
+        onClick: function(){} // Callback after click
+      }).showToast();
+
     const idBoton = evento.currentTarget.id;
     const productoAgregar = productosMichi.find((producto) => producto.id === idBoton);
 

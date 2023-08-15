@@ -1,0 +1,14 @@
+[
+    {
+        "nombre":"Melina",
+        "contrasenia":"123"
+    },
+    {
+        "nombre":"Juan",
+        "contrasenia":"456"
+    },
+    {
+        "nombre":"Lily",
+        "contrasenia":"789"
+    }
+]
